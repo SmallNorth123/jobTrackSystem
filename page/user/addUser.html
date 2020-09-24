@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加用户</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend><b>添加用户</b></legend>
+        </fieldset>
+
+        <form class="layui-form" action="" method="post">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">用户名<span style="color: red;font-size:15pt">*</span></label>
+
+                <div class="layui-input-inline">
+
+                    <input type="text" name="title" id="username" lay-verify="required" autocomplete="off"  placeholder="请输入用户名" class="layui-input" >
+                </div>
+                <div class="layui-form-mid " ><img id="yes" src="../image/对勾.png" width="16px" style="display: none"/></div>
+
+                <div  id="nameMsg" class="layui-form-mid " style="color: gray">请输入字母数字组合，开头是字母，3-15 个字符</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">密&nbsp;&nbsp;&nbsp;码<span style="color: red;font-size:15pt">*</span></label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" id="password" lay-verify="required"  placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid " ><img id="yes2" src="../image/对勾.png" width="16px" style="display: none"/></div>
+                <div class="layui-form-mid " style="color: gray" id="upwdMsg">初始密码为123456，密码是 6-20 个字符，由数字和字母构成</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认密码<span style="color: red;font-size:15pt">*</span></label>
+                <div class="layui-input-inline">
+                    <input type="password" name="againPassword" id="againPassword" lay-verify="required"  placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <span id="pwdMsg"></span>
+                </div>
+                <div class="layui-form-mid " ><img id="yes3" src="../image/对勾.png" width="16px" style="display: none"/></div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">真实姓名<span style="color: red;font-size:15pt">*</span></label>
+                <div class="layui-input-inline">
+                    <input type="text"  name="realUsername" lay-verify="title" autocomplete="off" placeholder="请输入真实姓名" class="layui-input" id="realName">
+                </div>
+                <div class="layui-form-mid " ><img id="yes5" src="../image/对勾.png" width="16px" style="display: none"/></div>
+                <div  id="rnameMsg" class="layui-form-mid " style="color: gray">请输入2-5个汉字</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">校内职务</label>
+                <div class="layui-input-inline">
+                    <select name="cadres" lay-filter="cadres">
+                        <option value=""></option>
+                        <option value="0">班干部</option>
+                        <option value="1">学生会干部</option>
+                        <option value="2">社团干部</option>
+                        <option value="3">无</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">联系方式<span style="color: red;font-size:15pt">*</span></label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="phone" id="tel" lay-verify="required|phone" autocomplete="off" class="layui-input" placeholder="请输入手机号">
+                    </div>
+                    <div class="layui-form-mid " ><img id="yes4" src="../image/对勾.png" width="16px" style="display: none"/></div>
+                    <div id="uTel" class="layui-form-mid" style="color: gray">请输入11位阿拉伯数字</div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">QQ</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="qq" lay-verify="required|QQ" autocomplete="off" class="layui-input" placeholder="请输入qq号">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色<span style="color: red;font-size:15pt">*</span></label>
+                <div class="layui-input-inline">
+                    <select name="role" lay-filter="juese">
+                        <option value=""></option>
+                        <option value="0">管理员</option>
+                        <option value="1">超级管理员</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label ">年级</label>
+                <div class="layui-input-block">
+                    <div class="layui-input-inline">
+                        <input id="year" type="text" name="grade" placeholder="请选择入学年份" autocomplete="off" class="layui-input" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="启用|禁止">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="demo1">添加</button>
+                    <button type="button" class="layui-btn layui-btn-primary" id="resetPwd">重置密码</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<style>
+    .layui-form-item .layui-input-inline{
+        width:260px;
+    }
+</style>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+        //自定义验证规则
+        /*form.verify({
+            title: function (value) {
+                if (value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            }
+            , pass: [
+                /^[\S]{6,12}$/
+                , '密码必须6到12位，且不能出现空格'
+            ]
+            , content: function (value) {
+                layedit.sync(editIndex);
+            }
+        });*/
+
+        //监听指定开关
+        form.on('switch(switchTest)', function (data) {
+            layer.msg('开关checked：' + (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            });
+            return false;
+        });
+    });
+    layui.use(['form', 'layer'], function () {
+        layer = layui.layer;
+        form = layui.form;
+        $ = layui.$;
+        var flag1 = false;
+        // 验证用户名
+        $("#username").blur(function () {
+            var uname = $("#username").val();
+            if (uname == null || $.trim(uname).length == 0 || uname == '') {
+                layer.msg("用户名不能为空哦！")
+                $("#username").css("border-color","red");
+                $("#nameMsg").css({"color":"red","font-size":"11pt"});
+            } else{
+                var pattern = /[A-Za-z]{1}[A-Za-z0-9]{3,15}/;
+                flag1 = pattern.test(uname);
+                if(flag1){
+                    $("#username").css("border-color","");
+                    $("#nameMsg").css('display', 'none');
+                    $("#yes").css('display','block')
+                } else{
+                    layer.msg("用户名格式错误！");
+                    $("#username").css("border-color","red");
+                    $("#yes").css('display', 'none');
+                    $("#nameMsg").css('display', 'block');
+                    $("#nameMsg").css({"color":"red","font-size":"11pt"});
+                }
+            }
+        });
+        // 验证密码
+        var flag2 = false;
+        $("#password").blur(function () {
+            password = $("#password").val();
+            if (password == null || $.trim(password).length == 0 || password == "") {
+                layer.msg("密码不能为空哦！",{icon:7});
+                $("#password").css("border-color","red");
+                $("#upwdMsg").css({"color":"red","font-size":"11pt"})
+            } else{
+                var pattern = /(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+                flag2 = pattern.test(password);
+                if (flag2) {
+                    $("#password").css("border-color","");
+                    $("#upwdMsg").css('display','none');
+                    $("#yes2").css('display','block');
+                } else{
+                    layer.msg("密码格式错误！",{icon:7});
+                    $("#password").css("border-color","red");
+                    $("#yes2").css('display', 'none');
+                    $("#upwdMsg").css('display', 'block');
+                    $("#upwdMsg").css({"color":"red","font-size":"11pt"})
+                }
+            }
+        });
+        // 二次确认密码
+        var flag3 = false;
+        $("#againPassword").blur(function () {
+            var pwd = $("#againPassword").val();
+            if (pwd == null || $.trim(pwd).length == 0 || pwd == "") {
+                layer.msg("密码不能为空！",{icon:7});
+                $("#againPassword").css("border-color", "red");
+            } else{
+                if (password !== pwd) {
+                    layer.msg("两次密码不一致！",{icon:7});
+                    $("#yes3").css('display', 'none');
+                    $("#againPassword").css("border-color", "red");
+                } else{
+                    $("#againPassword").css("border-color", "");
+                    $("#yes3").css('display', 'block');
+                    flag3 = true;
+                }
+            }
+        });
+        // 验证手机号
+        var flag4 = false;
+        $("#tel").blur(function () {
+            var tel = $("#tel").val();
+            if (tel == null || $.trim(tel).length == 0 || tel == "") {
+                layer.msg("手机号不能为空！",{icon:7});
+                $("#tel").css("border-color","red");
+                $("#uTel").css({"color":"red","font-size":"11pt"})
+            } else{
+                var pattern = /^1[3456789]\d{9}$/;
+                flag4 = pattern.test(tel);
+                if (flag4) {
+                    $("#tel").css("border-color","");
+                    $("#uTel").css('display', 'none');
+                    $("#yes4").css('display','block');
+                }else{
+                    layer.msg("手机号码格式错误",{icon:7});
+                    $("#yes4").css('display', 'none');
+                    $("#uTel").css('display', 'block');
+                    $("#tel").css("border-color","red");
+                    $("#uTel").css({"color":"red","font-size":"11pt"})
+                }
+            }
+        });
+        // 验证真实名字
+        $("#realName").blur(function () {
+            var rname = $("#realName").val();
+            if (rname == null || $.trim(rname).length == 0 || rname == '') {
+                layer.msg('真实姓名不能为空！', {icon: 7})
+                $("#realName").css("border-color","red");
+                $("#rnameMsg").css({"color":"red","font-size":"11pt"})
+            } else {
+                var pattern = /^[\u4e00-\u9fa5]{2,5}$/;
+                if (pattern.test(rname)) {
+                    $("#realName").css('border-color','');
+                    $("#rnameMsg").css('display', 'none');
+                    $("#yes5").css('display','block')
+                } else{
+                    layer.msg("格式有误", {icon: 7});
+                    $("#yes5").css('display','none');
+                    $("#realName").css("border-color","red");
+                    $("#rnameMsg").css('display','block')
+                    $("#rnameMsg").css({"color":"red","font-size":"11pt"})
+
+                }
+            }
+        });
+
+        $("#resetPwd").click(function () {
+            $("#password").val('123456');
+        })
+    });
+    //
+    // 入选年份选择器
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        var initYear;
+        laydate.render({
+            elem: '#year',
+            type: 'year',
+            trigger:'click',
+            /* ready和change函数是为了实现选择年份时不用点确定直接关闭  */
+            ready: function(date){ // 控件在打开时触发，回调返回一个参数：初始的日期时间对象
+                initYear = date.year;
+            },
+            change: function(value, date, endDate){ // 年月日时间被切换时都会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象
+                var selectYear = date.year;
+                var differ = selectYear-initYear;
+                if (differ != 15 && differ != -15) {
+                    if($(".layui-laydate").length){
+                        $("#year").val(value);
+                        $(".layui-laydate").remove();
+                    }
+                }
+                initYear = selectYear;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
